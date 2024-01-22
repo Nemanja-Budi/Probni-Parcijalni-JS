@@ -168,6 +168,20 @@
       return parametri;
     };
 
+    const promenaDesti = () => {
+      const selekt1 = vratiElement('sel1');
+      return selekt1.value;
+    }
+
+    const calculate = () => {
+      const mesto = promenaDesti();
+      const desti = destinations.filter((desti) => {
+        if (desti.name === mesto) {
+          const ptag = vratiElement('paragraph');
+          ptag.innerText = `Price for your selected destination is ${desti.price}.`;
+        }
+      });
+    }
 
 
   </script>
@@ -194,7 +208,7 @@
           </div>
           <div class="form-group">
             <label for="sel1">Your possible destinations are:</label>
-            <select name="klasa" class="form-control" id="sel1">
+            <select name="klasa" class="form-control" id="sel1" onchange="promenaDesti()">
             </select>
             <p class="lead" id="paragraph"></p>
 
