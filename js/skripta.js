@@ -51,8 +51,8 @@ const vratiElement = (id) => {
 
 const getCheckBox = (checkBox) => {
     const selekt1 = vratiElement('sel1');
-    const cb = checkBox.checked;
-    if (cb) {
+
+    if (checkBox.checked) {
         selekt1.disabled = false;
     }
     else {
