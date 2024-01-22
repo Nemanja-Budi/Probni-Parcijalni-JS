@@ -94,22 +94,45 @@
 
       const url = window.location.search.substring(1);
       const recnik = mapirajParametre(url);
-      console.log(recnik);
 
       createH1(recnik.ime, recnik.prezime);
 
       if (recnik.status !== undefined) {
         const klasa = vratiKlasu(recnik.klasa);
+
         createH4(klasa);
+        ordinaryDesti();
+        klasaDesti(recnik.klasa);
       }
       else {
-        console.log('Ne postoji');
+        ordinaryDesti();
       }
+    };
+
+    const ordinaryDesti = () => {
+      filtrirajObjekat('Ordinary');
+    };
+
+    const klasaDesti = (klase) => {
+      for (let i = 1; i <= klase; i++) {
+        const klasa = vratiKlasu(i);
+        filtrirajObjekat(klasa);
+      }
+    };
+
+    const filtrirajObjekat = (klase) => {
+      const desti = destinations.filter(dest => dest.type === klase.toLowerCase());
+      const imeDesti = desti.map(dest => fillSelekt(dest.name));
+    };
+
+    const fillSelekt = (destinacije) => {
+      const selkt1 = vratiElement('sel1');
+      selkt1.options[sel1.options.length] = new Option(destinacije);
     };
 
     const vratiElement = (id) => {
       return document.getElementById(id);
-    }
+    };
 
     const vratiKlasu = (klasa) => {
       if (klasa == 1) {
@@ -121,17 +144,17 @@
       else if (klasa == 3) {
         return 'Platinum'
       }
-    }
+    };
 
     const createH4 = (klase) => {
       const h4 = vratiElement('premium_member');
       h4.textContent += `You are our premium member, with ${klase} membership!`;
-    }
+    };
 
     const createH1 = (paramIme, paramPrz) => {
       const h1 = vratiElement('welcome_user');
       h1.textContent += `Hello, ${paramIme} ${paramPrz}`;
-    }
+    };
 
     const mapirajParametre = (url) => {
       const parametri = {};
