@@ -72,6 +72,7 @@ const vratiMembership = (vrednost) => {
     }
 }
 
+
 const getSelektValue = () => {
     const selekt1 = vratiElement('sel1');
     const submitBtn = vratiElement('submitbtn');
@@ -99,3 +100,4 @@ const getSelektValue = () => {
 
 
 }
+

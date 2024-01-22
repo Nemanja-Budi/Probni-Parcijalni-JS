@@ -90,17 +90,42 @@
     destinations.push(dest8);
     destinations.push(dest9);
 
-
     window.onload = function () {
+
       const url = window.location.search.substring(1);
       const recnik = mapirajParametre(url);
       console.log(recnik);
 
       createH1(recnik.ime, recnik.prezime);
+
+      if (recnik.status !== undefined) {
+        const klasa = vratiKlasu(recnik.klasa);
+        createH4(klasa);
+      }
+      else {
+        console.log('Ne postoji');
+      }
     };
 
     const vratiElement = (id) => {
       return document.getElementById(id);
+    }
+
+    const vratiKlasu = (klasa) => {
+      if (klasa == 1) {
+        return 'Silver';
+      }
+      else if (klasa == 2) {
+        return 'Gold';
+      }
+      else if (klasa == 3) {
+        return 'Platinum'
+      }
+    }
+
+    const createH4 = (klase) => {
+      const h4 = vratiElement('premium_member');
+      h4.textContent += `You are our premium member, with ${klase} membership!`;
     }
 
     const createH1 = (paramIme, paramPrz) => {
