@@ -175,7 +175,7 @@
 
     const calculate = () => {
       const mesto = promenaDesti();
-      const desti = destinations.filter((desti) => {
+      const destinacije = destinations.filter((desti) => {
         if (desti.name === mesto) {
           const ptag = vratiElement('paragraph');
           ptag.innerText = `Price for your selected destination is ${desti.price}.`;
