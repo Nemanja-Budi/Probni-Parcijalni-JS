@@ -47,15 +47,55 @@ const proveraForme = (forma) => {
 
 const vratiElement = (id) => {
     return document.getElementById(id);
-}
+};
 
 const getCheckBox = (checkBox) => {
     const selekt1 = vratiElement('sel1');
-
-    if (checkBox.checked) {
+    const cb = checkBox.checked;
+    if (cb) {
         selekt1.disabled = false;
     }
     else {
         selekt1.disabled = true;
     }
+};
+
+const vratiMembership = (vrednost) => {
+    if (vrednost == 1) {
+        return 'Silver';
+    }
+    if (vrednost == 2) {
+        return 'Gold';
+    }
+    else if (vrednost == 3) {
+        return 'Platinum';
+    }
+}
+
+const getSelektValue = () => {
+    const selekt1 = vratiElement('sel1');
+    const submitBtn = vratiElement('submitbtn');
+    const membership = vratiMembership(selekt1.value);
+
+
+    if (selekt1.disabled === false) {
+        if (membership == 'Silver') {
+            submitBtn.style.backgroundColor = 'silver';
+
+        }
+        else if (membership == 'Gold') {
+            submitBtn.style.backgroundColor = 'gold';
+        }
+        else if (membership == 'Platinum') {
+            submitBtn.style.backgroundColor = 'teal';
+
+        }
+
+    }
+    else {
+        submitBtn.style.backgroundColor = 'white';
+    }
+
+
+
 }
