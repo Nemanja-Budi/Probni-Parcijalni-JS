@@ -43,4 +43,19 @@ const proveraForme = (forma) => {
         alert('Prezime mora pocinjati velikim slovom');
         return false;
     }
+};
+
+const vratiElement = (id) => {
+    return document.getElementById(id);
+}
+
+const getCheckBox = (checkBox) => {
+    const selekt1 = vratiElement('sel1');
+
+    if (checkBox.checked) {
+        selekt1.disabled = false;
+    }
+    else {
+        selekt1.disabled = true;
+    }
 }
